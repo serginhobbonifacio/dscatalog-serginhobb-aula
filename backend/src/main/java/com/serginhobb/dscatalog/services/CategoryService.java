@@ -1,8 +1,6 @@
 package com.serginhobb.dscatalog.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -25,11 +23,14 @@ public class CategoryService {
 	
 	@Autowired
 	private CategoryRepository repository;
-	
+
+	// FIND ALL ORIGINAL
+
+	/*
 	@Transactional(readOnly = true)	
-	public Page<CategoryDTO> findAllPaged(PageRequest pageRequest){
+	public List<CategoryDTO> findAll(){
 			
-		Page<Category> list = repository.findAll(pageRequest);
+		List<Category> list = repository.findAll();
 		
 		/*
 		List<CategoryDTO> listDto = new ArrayList<>();
@@ -40,8 +41,11 @@ public class CategoryService {
 		return listDto;
 		*/
 		
-		return list.map(x -> new CategoryDTO(x));
+	/*
+		return list.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
 	}
+
+	*/
 
 	@Transactional(readOnly = true)	
 	public CategoryDTO findById(Long id) {
@@ -82,5 +86,13 @@ public class CategoryService {
 			throw new DatabaseException("Integrity violation");
 		}
 		
+	}
+	
+	// FIND ALL PAGINADO
+	
+	@Transactional(readOnly = true)	
+	public Page<CategoryDTO> findAllPaged(PageRequest pageRequest){
+		Page<Category> list = repository.findAll(pageRequest);
+		return list.map(x -> new CategoryDTO(x));
 	}
 }
