@@ -1,6 +1,8 @@
 package com.serginhobb.dscatalog.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -26,7 +28,6 @@ public class CategoryService {
 
 	// FIND ALL ORIGINAL
 
-	/*
 	@Transactional(readOnly = true)	
 	public List<CategoryDTO> findAll(){
 			
@@ -41,11 +42,8 @@ public class CategoryService {
 		return listDto;
 		*/
 		
-	/*
 		return list.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
 	}
-
-	*/
 
 	@Transactional(readOnly = true)	
 	public CategoryDTO findById(Long id) {

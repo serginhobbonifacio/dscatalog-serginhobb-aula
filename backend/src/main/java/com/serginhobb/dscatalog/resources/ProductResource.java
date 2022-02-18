@@ -1,6 +1,7 @@
 package com.serginhobb.dscatalog.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,14 +31,12 @@ public class ProductResource {
 	
 	// FIND ALL ORIGINAL
 	
-	/*
-	@GetMapping
+	@GetMapping(value = "/all")
 	public ResponseEntity<List<ProductDTO>> findAll() {
 		List<ProductDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	*/
-
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
 		ProductDTO dto = service.findById(id);

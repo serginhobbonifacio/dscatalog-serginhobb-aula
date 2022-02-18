@@ -1,6 +1,7 @@
 package com.serginhobb.dscatalog.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,13 +31,11 @@ public class CategoryResource {
 	
 	// FIND ALL ORIGINAL
 	
-	/*
-	@GetMapping
+	@GetMapping(value = "/all")
 	public ResponseEntity<List<CategoryDTO>> findAll() {
 		List<CategoryDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	*/
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
